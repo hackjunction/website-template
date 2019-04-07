@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "page",
+    "description": "A custom page with a unique url path"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "default": "",
+      "type": "string"
+    },
+    "URLPath": {
+      "default": "",
+      "type": "string"
+    },
+    "Body": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}

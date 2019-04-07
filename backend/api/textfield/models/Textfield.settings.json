@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "textfield",
+    "description": "A piece of text with a key value - can be shown in a specific place on the website"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "key": {
+      "default": "",
+      "unique": true,
+      "type": "enumeration",
+      "required": true
+    },
+    "text": {
+      "default": "",
+      "type": "text",
+      "required": true
+    }
+  }
+}
