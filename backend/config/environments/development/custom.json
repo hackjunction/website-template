@@ -1,0 +1,4 @@
+{
+  "myCustomConfiguration": "This configuration is accessible through strapi.config.environments.development.myCustomConfiguration",
+  "someEnvironmentVariable": "${process.env.EXAMPLE_ENV_VAR}"
+}
