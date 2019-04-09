@@ -27,7 +27,11 @@ Okay, first of all you'll need to have the following installed on your system:
 
 Next, clone the repository. You'll probably want to rename it from `website-template` to something else - we'll use `awesome-site` in this readme.
 
-`git clone git@github.com:hackjunction/website-template.git awesome-site`
+First, clone the repository:
+
+```
+git clone git@github.com:hackjunction/website-template.git awesome-site
+```
 
 Next, let's clear the link to this git repository and create your own git project:
 
@@ -37,3 +41,32 @@ rm -rf .git
 git init
 ```
 
+Also, the example repository comes packaged with a few images so we've removed the `uploads` folder from `.gitignore`, but you'll want to add that back so your uploads don't get checked into your git repository. 
+
+Edit `backend/.gitignore` and remove the hashtags in front of the two `public/uploads/...` lines
+
+```
+############################
+# Misc.
+############################
+
+*#
+ssl
+.idea
+nbproject
+# public/uploads/*
+# !public/uploads/.gitkeep
+
+```
+
+# Change the project name
+
+Our project is called `awesome-site` so let's edit the project name in a few places to reflect that. This is not strictly necessary but would make a lot of sense for you to do as well. 
+
+1) In `backend/config/environments/development/database.json` edit the `database` field from `react-strapi-starter` to your project name (`awesome-site`)
+
+2) In package.json, change the project name to `awesome-site`. Do the same for `backend/package.json`
+
+# Spin up the project
+
+...to be continued
