@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "mediafield",
   "info": {
     "name": "mediafield",
     "description": "A piece of media (image most likely) with a key, can be shown in a specific place on the website."
@@ -13,7 +13,11 @@
       "default": "",
       "unique": true,
       "type": "enumeration",
-      "required": true
+      "required": true,
+      "enum": [
+        "homePageHeaderImage",
+        "\nnotFoundPageHeaderImage"
+      ]
     },
     "media": {
       "model": "file",

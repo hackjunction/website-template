@@ -1,4 +1,5 @@
 import * as ActionTypes from './actionTypes';
+import { map } from 'lodash-es';
 import { handle } from 'redux-pack';
 
 const initialState = {

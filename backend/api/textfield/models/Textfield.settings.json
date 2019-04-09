@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "textfield",
   "info": {
     "name": "textfield",
     "description": "A piece of text with a key value - can be shown in a specific place on the website"
@@ -13,7 +13,13 @@
       "default": "",
       "unique": true,
       "type": "enumeration",
-      "required": true
+      "required": true,
+      "enum": [
+        "homePageTitle",
+        "\nhomePageBody",
+        "\nnotFoundPageTitle",
+        "\nnotFoundPageBody"
+      ]
     },
     "text": {
       "default": "",

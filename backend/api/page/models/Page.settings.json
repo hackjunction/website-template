@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "page",
   "info": {
     "name": "page",
     "description": "A custom page with a unique url path"
@@ -20,6 +20,12 @@
     "Body": {
       "default": "",
       "type": "text"
+    },
+    "HeaderImage": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
     }
   }
 }

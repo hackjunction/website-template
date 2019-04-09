@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+
+.CenteredContent {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 $padding-page;
+
+	&--inner {
+		width: 100%;
+		max-width: $content-max-width;
+	}
+}

@@ -11,6 +11,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case ActionTypes.UPDATE_PAGES: {
+
 			return handle(state, action, {
 				start: prevState => ({ ...prevState, loading: true, error: false }),
 				finish: prevState => ({ ...prevState, loading: false }),

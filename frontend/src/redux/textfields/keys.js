@@ -1,6 +1,8 @@
 const TEXTFIELD_KEYS = {
 	homePageTitle: 'homePageTitle',
-	homePageBodyText: 'homePageBodyText',
+	homePageBody: 'homePageBody',
+	notFoundPageTitle: 'notFoundPageTitle',
+	notFoundPageBody: 'notFoundPageBody',
 }
 
 export default TEXTFIELD_KEYS;

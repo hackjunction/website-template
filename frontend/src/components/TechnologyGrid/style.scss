@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+
+.TechnologyGrid {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&--title {
+		text-align: center;
+	}
+
+	&--items {
+		display: flex; 
+		flex-direction: row;
+		width: 100%;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	&--item {
+		width: 300px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+
+		&__logo {
+			width: 80%;
+			height: 200px;
+			padding: 20px;
+			object-fit: contain;
+		}
+
+		&__name {
+			@extend %font-title;
+			font-weight: bold;
+			text-align: center;
+			font-size: 22px;
+		}
+	}
+}

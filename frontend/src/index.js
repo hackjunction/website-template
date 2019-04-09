@@ -7,11 +7,21 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { CloudinaryContext } from 'cloudinary-react'
+import WebFont from 'webfontloader';
 import config from './config'
 
 import configureStore from './redux/configureStore'
 
 const { store, persistor } = configureStore()
+
+WebFont.load({
+	google: {
+		families: [
+			'Montserrat:400,400i,700,700i',
+			'Lato:400,400i,700,700i',
+		]
+	}
+});
 
 ReactDOM.render(
 	<Provider store={store}>

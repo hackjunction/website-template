@@ -1,0 +1,14 @@
+.Divider {
+	height: 50px;
+	width: 50px;
+
+	&-sm {
+		height: 20px;
+		width: 20px;
+	}
+
+	&-lg {
+		height: 100px;
+		width: 100px;
+	}
+}
