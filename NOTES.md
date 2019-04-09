@@ -7,6 +7,9 @@
 - change database name in backend/config/environments/development/database.json from react-strapi-starter to your-own-name
 - remove #comments from .gitignore relating to /public/uploads 
 
+## Import the content to your local database
+mongoimport --db react-strapi-starter --collection test --file test.json
+
 ## Setting up the admin
 
 - run `yarn dev` in the root directory to start both the backend and the frontend development server
