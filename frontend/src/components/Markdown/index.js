@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import './style.scss';
 
-import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 import breaks from 'remark-breaks';
 

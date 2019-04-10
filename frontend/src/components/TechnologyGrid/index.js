@@ -26,7 +26,7 @@ class TechnologyGrid extends PureComponent {
 		const { technologies } = this.props;
 		return map(technologies, technology => {
 			return (
-				<div className="TechnologyGrid--item">
+				<div className="TechnologyGrid--item" key={technology.name}>
 					<img className="TechnologyGrid--item__logo" src={technology.logo.url} alt={technology.name} />
 				</div>
 			)

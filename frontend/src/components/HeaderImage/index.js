@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { mediafields as selectMediafields } from '../../redux/mediafields/selectors';
 import { textfields as selectTextfields } from '../../redux/textfields/selectors';
 
+import Image from '../Image';
 
 class HeaderImage extends PureComponent {
 
@@ -20,13 +21,9 @@ class HeaderImage extends PureComponent {
 	render() {
 		const { image, title, subtitle, } = this.props
 
-		if (!image) {
-			return null;
-		}
-
 		return (
 			<div className="HeaderImage">
-				<img className="HeaderImage--image" src={image.url} alt="Header image" />
+				<Image className="HeaderImage--image" image={image} alt="Header" />
 				<div className="HeaderImage--content">
 					<h1 className="HeaderImage--content__title">{title}</h1>
 					<p className="HeaderImage--content__subtitle">{subtitle}</p>

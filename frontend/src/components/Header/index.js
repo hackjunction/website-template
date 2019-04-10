@@ -11,7 +11,7 @@ class Header extends PureComponent {
 	renderPages() {
 		return map(this.props.pages, page => {
 			return (
-				<Link className="Header--nav__link" to={`/${page.URLPath}`}>{page.Title}</Link>
+				<Link key={page.Title} className="Header--nav__link" to={`/${page.URLPath}`}>{page.Title}</Link>
 			)
 		})
 	}

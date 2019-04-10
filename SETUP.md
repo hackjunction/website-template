@@ -6,19 +6,31 @@ Okay, first of all you'll need to have the following installed on your system:
 
 - Node.js 10.7.0 or higher - [install with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew) if using a Mac, or [download the installer for your system](https://nodejs.org/en/download/current/) if not
 
-- MongoDB - [install with Homebrew](https://treehouse.github.io/installation-guides/mac/mongo-mac.html) if using a Mac, or follow the [installation instructions here](https://docs.mongodb.com/manual/installation/)
 
+- MongoDB 3.6.1 - [install with Homebrew](https://treehouse.github.io/installation-guides/mac/mongo-mac.html) if using a Mac, or follow the [installation instructions here](https://docs.mongodb.com/manual/installation/)
+
+If you already have these installed, verify they are the correct versions:
+
+```
+Juusos-MacBook-Pro:~ juuso$ node -v
+v10.7.0
+Juusos-MacBook-Pro:~ juuso$ mongod --version
+db version v3.6.1
+...
+```
+
+In case you need to have different versions of node for different project, I would recommend you install [Node Version Manager](https://github.com/creationix/nvm) to be able to use different versions depending on the project directory.
 
 # Setup
 
 ### Clone the repository and set it up
 
-Next, clone the repository. You'll probably want to rename it from `website-template` to something else - we'll use `awesome-site` in this readme.
+First, clone the repository. You'll probably want to rename it from `website-template` to something else - we'll use `awesome-site` in this readme.
 
 First, clone the repository:
 
 ```
-git clone git@github.com:hackjunction/website-template.git awesome-site
+git clone https://github.com/hackjunction/website-template.git awesome-site
 ```
 
 Next, let's clear the link to this git repository and create your own git project:
@@ -51,24 +63,77 @@ nbproject
 
 Our project is called `awesome-site` so let's edit the project name in a few places to reflect that. This is not strictly necessary but would make a lot of sense for you to do as well. 
 
-1) In `backend/config/environments/development/database.json` edit the `database` field from `react-strapi-starter` to your project name (`awesome-site`)
+1) In package.json, change the project name to `awesome-site`. Do the same for `backend/package.json`
 
-2) In package.json, change the project name to `awesome-site`. Do the same for `backend/package.json`
+```
+{
+  "name": "react-strapi-starter", // Change this to your project name
+  "version": "1.0.0",
+  "main": "index.js",
+  ...
+```
+
+2) In `backend/config/environments/development/database.json` edit the `database` field from `react-strapi-starter` to your project name (`awesome-site`)
+
+```
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-mongoose",
+      "settings": {
+        "client": "mongo",
+        "host": "127.0.0.1",
+        "port": 27017,
+        "database": "react-strapi-starter", // Change this to your project name
+        "username": "",
+        "password": ""
+      },
+      "options": {}
+    }
+  }
+}
+```
 
 3) In `frontend/src/redux/configureStore.js` edit `persistConfig` and change the `key` field from `react-strapi-starter` to your app name (`awesome-site`)
+
+```
+const persistConfig = {
+	key: 'react-strapi-starter', // Change this to your project name
+	storage,
+	stateReconciler: autoMergeLevel2,
+}
+```
 
 
 ### Spin up the project
 
 First, let's install the dependencies for both the backend and frontend.
 
-First of all, make sure you have a local MongoDB server running. In a new terminal window, run `mongod` to start the server.
+First of all, make sure you have a local MongoDB server running. In a new terminal window, run `mongod` to start the server. If this fails with a "permission denied" error, you might need to run:
 
+```
+sudo mkdir -p /data/db
+sudo chown -R $USER /data/db 
+mongod
+```
 
 Then, in the project root, run: 
 
 ```
 npm run setup
+npm install strapi@alpha -g
+```
+
+If this step fails, you might be better off running the setup steps separately
+
+```
+npm install -g yarn //sudo if needed
+yarn install
+cd backend
+npm install
+cd ../frontend
+yarn install
 ```
 
 In addition to the project dependencies this will install `yarn` globally on your machine. In short, Yarn is a better alternative for npm and should be used when installing new dependencies to the frontend (the React app in `frontend`). 
