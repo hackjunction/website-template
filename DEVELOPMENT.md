@@ -454,10 +454,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(FAQList)
 
 By making these additions, we've told redux that we want to: 
 
-- Give our FAQList component a `faqs` prop, which should be whatever our FAQSelectors.faqs() function returns 
+- Give our FAQList component a `faqs` prop, which should just be the faq items from the Redux store
 - Give our FAQList component a `updateFaqs` prop, which essentially calls our updateFaqs action and starts the process of updating the FAQs stored in our Redux store.
 
-Now we can have our FAQList component start an update to the FAQs every time it's mounted: 
+The `faqs` prop will be updated with the current data in the store any time it changes, so your FAQList will always have the latest data as a prop.
+
+Now we can have our FAQList component request an update to the FAQs every time it's mounted: 
 
 ```
 class FAQList extends Component {
