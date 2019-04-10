@@ -1,6 +1,6 @@
 # Prerequisites
 
-**Be warned:** this guide was written by someone who uses Macos for development, and while most if not all steps are likely the same even if you are working on Linux or Windows - [install with Homebrew] if using a Mac, the setup instructions below are only guaranteed to work on Macos :)
+**Be warned:** this guide was written by someone who uses Macos for development, and while most if not all steps are likely the same even if you are working on Linux or Windows, be aware that some steps might not work exactly the same on your system.
 
 Okay, first of all you'll need to have the following installed on your system:
 
@@ -183,7 +183,7 @@ Editing content in the admin panel is pretty simple, and the example content con
 
 ### Setting up Cloudinary
 
-By default any images uploaded to the admin panel will go into `/backend/public/uploads` but you might want to change that to use something like Cloudinary. Cloudinary is an online image hosting service where you can serve any images on your site via their CDN in various formats and sizes depending on where you want to show them. This will dramatically speed up your site and I would recommend setting it up.
+By default any images uploaded to the admin panel will go into `/backend/public/uploads` but you might want to change that to use something like Cloudinary. Cloudinary is an online image hosting service where you can serve any images on your site via their CDN in various formats and sizes depending on where you want to show them. This will dramatically speed up your site and I would recommend setting it up from the get-go.
 
 - Create a [Cloudinary account](https://cloudinary.com/users/register/free) (they have a very generous free tier which will be more than enough for one site)
 - Open the Admin panel at `localhost:1337`
@@ -192,4 +192,6 @@ By default any images uploaded to the admin panel will go into `/backend/public/
 - Under the development tab, choose Cloudinary from the Providers dropdown, fill in your Cloudinary keys, and Save
 
 Now any images uploaded via the admin panel will go to your Cloudinary account, from where you can serve them in various sizes and formats just by making small edits to the url of the image. The project has [`cloudinary-react`](https://github.com/cloudinary/cloudinary-react) already set up for use, but you should look further into it yourself to learn how to unleash the full power of Cloudinary.
+
+The project also includes the `<Image />` component, which you can use to automatically fetch an image as a given size (thumbnail, full image, etc.) just by supplying it a `width` and `height` prop.
 
