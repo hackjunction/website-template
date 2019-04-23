@@ -9,7 +9,10 @@ const PageService = {
 	},
 
 	getAll: () => {
-		return axios.get(URL).then(res => res.data)
+		return axios.get(URL).then(res => {
+			console.log('RES', res);
+			return res.data;
+		})
 	},
 
 	getOne: (id) => {
