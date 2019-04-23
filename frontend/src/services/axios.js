@@ -1,9 +1,16 @@
+/**
+ * Custom axios service that:
+ * - Checks that response format is application/json
+ * - Returns the data field of the response
+ * 
+ * Use this with any calls you are making to the Strapi API.
+ */
+
 import axios from 'axios';
 
 const instance = axios.create();
 
 instance.interceptors.response.use(function (response) {
-	console.log('RESPONSE', response);
 	if (response.headers['content-type'].indexOf('application/json') !== -1) {
 		return response.data;
 	}
