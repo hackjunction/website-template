@@ -41,7 +41,7 @@ class Image extends PureComponent {
 			)
 		}
 
-		if (!image) {
+		if (!image || !image.url) {
 			return null;
 		}
 

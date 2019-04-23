@@ -19,6 +19,7 @@ export default function reducer(state = initialState, action) {
 				finish: prevState => ({ ...prevState, loading: false }),
 				failure: prevState => ({ ...prevState, error: true }),
 				success: prevState => {
+					console.log('TEXTFIELDS', action.payload);
 					const data = {}
 					const keys = map(action.payload, ({ key, text }) => {
 						data[key.trim()] = text;
