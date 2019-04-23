@@ -135,7 +135,7 @@ Next, you'll need to set up an A record in the DNS settings for your domain. In 
 
 - Type: A Record
 - Host: awesomeapp
-- Value: <IP of your droplet>
+- Value: IP of your droplet
 - TTL: Automatic
 
 If you don't own the domain (for example, you want to use a subdomain of hackjunction.com), contact the owner of the domain and ask them to add the above DNS record.
