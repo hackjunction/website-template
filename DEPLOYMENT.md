@@ -144,7 +144,7 @@ Once you've done those two things (added the domain to Dokku, and created the DN
 
 ### Configuring SSL
 
-It's 2019, and you **need** to have SSL enabled for your site or otherwise Google and other search engines will flag it as dangerous. It's also just a very good idea in general. Luckily it takes literally a minute or two to set up using `dokku-letsencrypt`. There's no point for me to rewrite their excellent guide, so please see here for instructions: https://github.com/dokku/dokku-letsencrypt
+It's 2019, and you **need** to have SSL enabled for your site or otherwise Google and other search engines (and not to mention browsers) will flag it as dangerous. It's also just a very good idea in general. Luckily it takes literally a minute or two to set up using `dokku-letsencrypt`. There's no point for me to rewrite their excellent guide, so please see here for instructions: https://github.com/dokku/dokku-letsencrypt
 
 If you're too lazy to check it out, ssh into your droplet and run these (make sure to substitute your app name and email in the second and third steps):
 
