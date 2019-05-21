@@ -10,6 +10,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GlobalLifecycle from './GlobalLifecycle';
+import TechnologyService from './services/technologies';
 
 class App extends Component {
 

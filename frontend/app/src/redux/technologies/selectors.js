@@ -4,6 +4,7 @@ import config from '../../config';
 const UPDATE_INTERVAL = config.IS_DEV ? 15 * 1000 : 10 * 60 * 1000; // 15 seconds (debug/development) / 10 minutes (production)
 
 export const technologies = state => state.technologies.data;
+
 export const technologiesMeta = state => ({
 	loading: state.technologies.loading,
 	error: state.technologies.error,

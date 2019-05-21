@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { technologies as selectTechnologies } from '../../redux/technologies/selectors';
 import { updateTechnologies } from '../../redux/technologies/actions';
 
+import TechnologyService from '../../services/technologies';
+
 class TechnologyGrid extends PureComponent {
 	static propTypes = {
 		technologies: PropTypes.array.isRequired,
@@ -50,7 +52,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	updateTechnologies: () => dispatch(updateTechnologies())
+	updateTechnologies: () => dispatch(updateTechnologies()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TechnologyGrid);
