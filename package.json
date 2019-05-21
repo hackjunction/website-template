@@ -5,6 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"setup": "npm install && npm run setup-backend && npm run setup-frontend",
+		"setup-backend": "cd backend && npm install",
+		"setup-frontend": "cd frontend && npm run setup",
 		"dev": "npm-run-all --parallel dev-frontend dev-backend",
 		"dev-backend": "cd backend && strapi start",
 		"dev-frontend": "cd frontend && npm run dev"
