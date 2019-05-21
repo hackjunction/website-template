@@ -4,10 +4,10 @@
 
 Okay, first of all you'll need to have the following installed on your system:
 
-- Node.js 10.7.0 or higher - [install with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew) if using a Mac, or [download the installer for your system](https://nodejs.org/en/download/current/) if not
+- Node.js 10.x or higher - [install with Homebrew](https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew) if using a Mac, or [download the installer for your system](https://nodejs.org/en/download/current/) if not
 
 
-- MongoDB 3.6.1 - [install with Homebrew](https://treehouse.github.io/installation-guides/mac/mongo-mac.html) if using a Mac, or follow the [installation instructions here](https://docs.mongodb.com/manual/installation/)
+- MongoDB 3.6.x - [install with Homebrew](https://treehouse.github.io/installation-guides/mac/mongo-mac.html) if using a Mac, or follow the [installation instructions here](https://docs.mongodb.com/manual/installation/)
 
 If you already have these installed, verify they are the correct versions:
 
@@ -61,9 +61,9 @@ nbproject
 
 ### Change the project name
 
-Our project is called `awesome-site` so let's edit the project name in a few places to reflect that. This is not strictly necessary but would make a lot of sense for you to do as well. 
+Our project is called `awesome-site` (you can name yours whatever you wish) so let's edit the project name in a few places to reflect that. This is not strictly necessary but would make a lot of sense for you to do as well. 
 
-1) In package.json, change the project name to `awesome-site`. Do the same for `backend/package.json`
+1) In the root directory package.json, change the project name to describe your project (`awesome-site`)
 
 ```
 {
@@ -95,7 +95,7 @@ Our project is called `awesome-site` so let's edit the project name in a few pla
 }
 ```
 
-3) In `frontend/src/redux/configureStore.js` edit `persistConfig` and change the `key` field from `react-strapi-starter` to your app name (`awesome-site`)
+3) In `frontend/app/src/redux/configureStore.js` edit `persistConfig` and change the `key` field from `react-strapi-starter` to your app name (`awesome-site`)
 
 ```
 const persistConfig = {
@@ -121,32 +121,14 @@ mongod
 Then, in the project root, run: 
 
 ```
-npm run setup
 npm install strapi@alpha -g
+npm run setup
 ```
 
-If this step fails, you might be better off running the setup steps separately
+Once the dependencies are installed, let's start the app in development mode by running (in the root of the project):
 
 ```
-npm install -g yarn //sudo if needed
-yarn install
-cd backend
-npm install
-cd ../frontend
-yarn install
-```
-
-In addition to the project dependencies this will install `yarn` globally on your machine. In short, Yarn is a better alternative for npm and should be used when installing new dependencies to the frontend (the React app in `frontend`). 
-
-So, instead of:
-
-- `npm install` use `yarn install`
-- `npm install --save some-dependency` use `yarn add some-dependency`
-
-Anyway, now that you've installed the dependencies, let's start the app in development mode by running (in the root of the project):
-
-```
-yarn dev
+npm run dev
 ```
 
 This will spin up the frontend at `localhost:3000` and the backend at `localhost:1337`. Both will automatically reload if any code changes are made. You'll notice that the frontend of the site isn't really showing any content, but we'll fix that in the next steps.
