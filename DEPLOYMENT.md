@@ -1,9 +1,14 @@
 # Deployment
-This guide will cover how to deploy the site on Digitalocean. Despite the frontend and backend of the project living in the same repository, we will be deploying them separately. This is partially due to limitations with Strapi, but also allows a bit more flexibility in how and where you deploy. This guide will be updated if in the future we find a solid way to deploy the whole project in a single deployment. 
+This guide will cover how to deploy the site on Digitalocean. The end result will be
 
-# Deploying a React app on Digitalocean with Dokku
+- A single, self-contained Digitalocean Dokku-droplet
+- With two separate apps for the client and cms, and a database
+- Which you can deploy with a simple `git push`, similar to services like Heroku
+- With a pricetag of $10/mo
 
-A quick guide for deploying the frontend of this site on Digitalocean, using a handly tool called Dokku. Dokku is a Docker-based tool that essentially allows you to host a Heroku instance on your own servers. It requires a bit of work upfront as compared to Heroku, but in the end is much more value for money while maintaining the ease-of-use that comes with a PaaS like Heroku. Note: **This section is only for the frontend, see below for instructions on deploying the backend**
+The frontend will be set up to run at subdomain.domain.tld (www.mydomain.com), and the backend at cms.subdomain.domain.tld (cms.www.mydomain.com). For us this has made a lot of sense, but feel free to customize your setup process if you want to have a different kind of setup.
+
+Okay, let's get started
 
 ### Setting up your Droplet
 
@@ -27,7 +32,11 @@ Now you'll need to wait a few minutes for the server to spin up, but once that's
 
 Under your project, you should now see your droplet and be able to copy the IP address of the droplet. Copy and paste that into a browser window, and you should be presented with a Dokku setup screen. If the page errors out (502 Bad Gateway etc.), the server has not yet completed it's internal setup processes and you should just wait a minute or two. 
 
-On the Dokku setup page, assuming the page is showing you the SSH key you added in the previous step, and the hostname seems correct, all you need to do for now is click **Finish Setup**.
+On the Dokku setup page:
+
+- Make sure the SSH key displayed is your SSH key
+- Check `use virtualhost naming for apps`
+- Click Finish Setup
 
 Now you'll want to SSH into your server, so open up a command line and type:
 
@@ -35,13 +44,14 @@ Now you'll want to SSH into your server, so open up a command line and type:
 ssh root@<your-droplet-ip>
 ```
 
-The server will have the dokku command line tool pre-installed, so you can create a new app with: 
+The server will have the dokku command line tool pre-installed, so we'll create two apps with the `dokku apps:create` command. In order for this setup to work, you should create two apps with these exact names:
 
 ```
-dokku apps:create app-name
+dokku apps:create 00-frontend
+dokku apps:create 01-backend
 ```
 
-Again, you should make the app name something recognisable to the project you're working on.
+I won't go into detail why you should call your apps this, but it has to do with making it easier to setup the domain in the way I outlined above (your client app should be first alphabetically).
 
 Next, if you're using a `.env` file for managing environment variables, you'll want to set
 those up on the server. If you're using this template, you'll want to make sure all variables defined in `frontend/.env` are also defined on the server. You can add environment variables with the following command:
@@ -50,18 +60,61 @@ those up on the server. If you're using this template, you'll want to make sure 
 dokku config:set app-name SOME_ENV_VARIABLE=value-of-the-variable
 ```
 
-### Configuring your app for production
-
-You'll want to have a `Procfile` in the root of your project that tells Dokku how to run your app. This project already has one set up, but if you don't have one in your project,just create a new `Procfile` with the contents: 
+Last, we'll install the `dokku-monorepo` plugin on our droplet to be able to deploy multiple different apps from a single repository easily:
 
 ```
+dokku plugin:install https://gitlab.com/notpushkin/dokku-monorepo
+```
+
+### Create a MongoDB database
+
+Let's install the `dokku-mongo` plugin on your droplet so that we can setup a new MongoDB database for our Strapi app. Follow the install instructions [here](https://github.com/dokku/dokku-mongo), and then run:
+
+```
+dokku mongo:create cms
+dokku mongo:link cms 01-backend
+```
+
+Next, run `dokku config:get 01-backend MONGO_URL` to verify that the database was correctly linked. On your local machine, in the project directory, open `backend/config/environments/production/database.json` and verify that it looks like this:
+
+```
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-mongoose",
+      "settings": {
+        "client": "mongo",
+        "uri": "${process.env.MONGO_URL}",
+        "host": "",
+        "port": "",
+        "database": "",
+        "username": "",
+        "password": ""
+      },
+      "options": {}
+    }
+  }
+}
+
+```
+
+
+### Configuring your app for production
+
+You'll want to have a `Procfile` in the root of your project that tells Dokku how to run your app. This project already has one set up, but just to make sure you should have the following files: 
+
+```
+# In frontend/Procfile
+web: npm start
+
+# In backend/Procfile
 web: npm start
 ``` 
 
-In addition, you should have an `app.json` file in the root of your project, so that dokku knows how to build your app. Since we are essentially deploying a Node.js app that serves our static React site, you should make one that tells Dokku to use the Node.js buildpack:
+In addition you should have an `app.json` under both `backend` and `frontend`, with the following contents: 
 
 ```
-/* app.json */
 {
 	"name": "<name in package.json>",
 	"repository": "<url of your repository>",
@@ -74,9 +127,11 @@ In addition, you should have an `app.json` file in the root of your project, so 
 		"NPM_CONFIG_PRODUCTION": true
 	}
 }
-```
+``` 
 
-You need to also make sure that the React app gets built whenever the app is deployed, so go ahead and add a `heroku-postbuild` script to your **root-level** package.json which does that:
+Make sure to substitute the `name` and `repository` fields with the correct values.
+
+You'll also need to make sure that the React app gets built whenever the app is deployed, so go ahead and make sure you have a `heroku-postbuild` script in `frontend/package.json`:
 
 ```
 /* package.json */
@@ -84,28 +139,39 @@ You need to also make sure that the React app gets built whenever the app is dep
 	
 	...other scripts here...
 
-	"heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+	"heroku-postbuild": "cd app && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
 }
 ```
+
+Finally, make sure you have a `.dokku-monorepo` file at the root of your repository, which tells Dokku the paths from which to build our various apps. For this app setup and naming, ours will look like this:
+
+```
+00-frontend=frontend
+01-backend=backend
+```
+
+If you are setting your apps up in a different way, feel free to read into the [dokku-monorepo docs](https://github.com/notpushkin/dokku-monorepo) for more info.
 
 Alright, that's it - we are now ready to deploy the app to our Droplet!
 
 ### Set up git remotes for deployment
 
-To deploy updates to the app, you'll push your code to a git remote exposed by Dokku. Make sure you are now in your project directory on your local machine, and add the remote with the following command:
+To deploy updates to the app, you'll push your code to a git remote exposed by Dokku. Make sure you are now in your project directory on your local machine, and add two new remotes with the following commands: 
 
 ```
-git remote add dokku dokku@<ip-of-your-droplet>:<app-name>
+git remote add dokku-frontend dokku@<ip-of-your-droplet>:00-frontend
+git remote add dokku-backend dokku@<ip-of-your-droplet>:01-backend
 ```
 
-Make sure to substitute your Droplet IP and name of the app you created on your server in the previous step in the above command before running it.
+Make sure to substitute your Droplet IP in the commands before running them!
 
 ### Your first deployment
 
-If all is working, you should now be able to deploy your app by running 
+If all is working, you should now be able to deploy your app (backend & frontend respectively) by running:
 
 ```
-git push dokku master
+git push dokku-backend master
+git push dokku-frontend master
 ```
 
 You'll see the build progress in your terminal window. Wait a few minutes for it to finish, and once it's done it will print something like this:
