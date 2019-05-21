@@ -5,11 +5,9 @@
   "author": "Juuso Lappalainen",
   "license": "MIT",
   "scripts": {
-    "setup": "npm install -g yarn && yarn install && cd backend && npm install && cd ../frontend && yarn install && cd ..",
-    "dev": "concurrently --kill-others \"npm run dev-frontend\" \"npm run dev-backend\"",
-    "dev-backend": "cd backend && strapi start",
-    "dev-frontend": "cd frontend && yarn start",
-    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "setup": "npm install && cd app && npm install",
+    "dev": "cd app && npm start",
+    "heroku-postbuild": "cd app && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "start": "node server.js"
   },
   "devDependencies": {
