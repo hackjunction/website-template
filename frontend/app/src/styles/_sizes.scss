@@ -1,7 +1,7 @@
 $bp-small: 600px;
 $bp-med: 900px;
 $bp-med: 620px;
-$bp-large: 1000px;
+$bp-full: 1000px;
 
 @mixin bp-small-only {
     @media (max-width: $bp-med - 1) {
@@ -16,7 +16,7 @@ $bp-large: 1000px;
 }
 
 @mixin bp-full {
-    @media (min-width: $bp-large) {
+    @media (min-width: $bp-full) {
         @content;
     }
 }

@@ -1,42 +1,53 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { updateStaticContent } from './redux/staticcontent/actions';
 
 import './App.scss';
 
-import HomePage from './pages/HomePage';
-import BasicPage from './pages/BasicPage';
-import NotFoundPage from './pages/NotFoundPage';
-
 import Header from './components/Header';
-import Footer from './components/Footer';
-import GlobalLifecycle from './GlobalLifecycle';
-import TechnologyService from './services/technologies';
+import HeroImage from './components/HeroImage';
+import TextField from './components/TextField';
+import HeroCTA from './components/HeroCTA';
 
 class App extends Component {
+    async componentDidMount() {
+        this.props.updateStaticContent();
+    }
 
-  render() {
-    return (
-      <Router className="foooofoo">
-        <div className="App">
-          <Header />
-          <main className="App--main">
-            <Switch>
-              {/* Static pages */}
-              <Route exact path="/" component={HomePage} />
-
-              {/* Other pages */}
-              <Route path="/:slug" component={BasicPage} />
-
-              {/* If not matched, 404 */}
-              <Route path="*" component={NotFoundPage} />
-            </Switch>
-          </main>
-          <Footer />
-          <GlobalLifecycle />
-        </div>
-      </Router>
-    )
-  }
+    render() {
+        return (
+            <Router className="foooofoo">
+                <div className="App">
+                    <Header />
+                    <main className="App--main">
+                        <HeroImage imageKey="homePageHeaderImage">
+                            <TextField textKey="homePageHeroCtaLink">
+                                {ctaLink => (
+                                    <HeroCTA
+                                        image={{ url: require('./assets/logos/wordmark_white.png') }}
+                                        subtitle={<TextField textKey="homePageHeroCtaSubtitle" />}
+                                        ctaText={<TextField textKey="homePageHeroCtaText" />}
+                                        ctaLink={ctaLink}
+                                    />
+                                )}
+                            </TextField>
+                        </HeroImage>
+                        <h1>Moro!</h1>
+                        <div>
+                            <h1>
+                                <TextField textKey="myKey" />
+                            </h1>
+                        </div>
+                    </main>
+                </div>
+            </Router>
+        );
+    }
 }
 
-export default App;
+export default connect(
+    null,
+    { updateStaticContent }
+)(App);

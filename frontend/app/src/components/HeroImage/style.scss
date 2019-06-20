@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.HeroImage {
+    width: 100%;
+    padding-top: 56.25%;
+    min-height: 600px;
+    position: relative;
+
+    @include bp-full {
+        padding-top: 800px;
+        // padding-top: $bp-full * 0.5625;
+    }
+
+    &--img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        object-fit: cover;
+    }
+
+    &--content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+}

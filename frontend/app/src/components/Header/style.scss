@@ -1,31 +1,23 @@
-@import '../../styles/variables';
-
 .Header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: $padding-base;
-	width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: red;
+    display: flex;
+    flex-direction: row;
 
-	&--left {
+    &--logo {
+        height: 100%;
+    }
 
-		&__logo {
-			height: 50px;
-		}
-	}
+    &--content {
+        flex: 1;
+    }
 
-	&--nav {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-
-		&__link {
-			margin: 0 10px;
-			color: $white;
-			text-transform: uppercase;
-			font-weight: bold;
-		}
-	}
+    &--emblem {
+        height: 100%;
+    }
 }

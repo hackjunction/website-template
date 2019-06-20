@@ -1,5 +1,0 @@
-{"_id":{"$oid":"5cac6ab61f9558e70ba1bf39"},"name":"React","createdAt":{"$date":"2019-04-09T09:49:42.254Z"},"updatedAt":{"$date":"2019-04-09T09:51:36.076Z"},"__v":0,"id":"5cac6ab61f9558e70ba1bf39"}
-{"_id":{"$oid":"5cac6b73b51a65eb9cacf8ca"},"name":"Redux","createdAt":{"$date":"2019-04-09T09:52:51.618Z"},"updatedAt":{"$date":"2019-04-09T09:52:51.628Z"},"__v":0,"id":"5cac6b73b51a65eb9cacf8ca"}
-{"_id":{"$oid":"5cac6ba2700c39ebafd047f2"},"name":"MongoDB","createdAt":{"$date":"2019-04-09T09:53:38.655Z"},"updatedAt":{"$date":"2019-04-09T09:53:38.665Z"},"__v":0,"id":"5cac6ba2700c39ebafd047f2"}
-{"_id":{"$oid":"5cac6bbb8d4cb4ebb77ecdc0"},"name":"Node.js","createdAt":{"$date":"2019-04-09T09:54:03.678Z"},"updatedAt":{"$date":"2019-04-09T09:54:03.686Z"},"__v":0,"id":"5cac6bbb8d4cb4ebb77ecdc0"}
-{"_id":{"$oid":"5cac6be73e4bb5ebbb96f948"},"name":"Docker","createdAt":{"$date":"2019-04-09T09:54:47.687Z"},"updatedAt":{"$date":"2019-04-09T09:54:47.698Z"},"__v":0,"id":"5cac6be73e4bb5ebbb96f948"}
