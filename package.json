@@ -9,7 +9,7 @@
         "setup-cms": "cd cms && npm install",
         "setup-frontend": "cd frontend && npm run setup",
         "dev": "npm-run-all --parallel dev-frontend dev-cms",
-        "dev-cms": "cd cms && strapi start",
+        "dev-cms": "cd cms && strapi develop",
         "dev-frontend": "cd frontend && npm run dev"
     },
     "author": "Juuso Lappalainen",

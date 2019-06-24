@@ -2,7 +2,7 @@ export const getText = (textfields, isEditor) => key => {
     if (textfields.hasOwnProperty(key)) {
         return `${isEditor ? key : textfields[key].content}`;
     } else {
-        return '';
+        return `${isEditor ? key : ''}`;
     }
 };
 

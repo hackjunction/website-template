@@ -44,7 +44,7 @@ class Image extends PureComponent {
 
         return (
             <img
-                src={image ? image.url : null}
+                src={image ? image.url : ''}
                 alt={alt}
                 className={`Image ${className} ${loaded ? '' : 'Image-loading'}`}
                 width={width}

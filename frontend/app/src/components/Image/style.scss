@@ -3,6 +3,10 @@
     transition-delay: 0.2s ease;
 }
 
+.Image[src=''] {
+    visibility: hidden;
+}
+
 .Image-loading {
     opacity: 0 !important;
 }
