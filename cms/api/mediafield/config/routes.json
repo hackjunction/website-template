@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/mediafields/:_id",
-      "handler": "Mediafield.destroy",
+      "handler": "Mediafield.delete",
       "config": {
         "policies": []
       }

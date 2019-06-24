@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "mediafield",
   "info": {
     "name": "mediafield",
     "description": ""
@@ -11,7 +11,9 @@
   "attributes": {
     "key": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "media": {
       "model": "file",

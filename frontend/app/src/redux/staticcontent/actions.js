@@ -1,9 +1,9 @@
 import * as ActionTypes from './actionTypes';
 import * as GraphqlService from '../../services/graphql/client';
-import { staticContentShouldUpdate } from './selectors';
+import { shouldUpdate } from './selectors';
 
 export const updateStaticContent = () => (dispatch, getState) => {
-    if (!staticContentShouldUpdate(getState())) {
+    if (!shouldUpdate(getState())) {
         return;
     }
 
@@ -13,5 +13,12 @@ export const updateStaticContent = () => (dispatch, getState) => {
         meta: {
             onFailure: e => console.log('Error updating events', e)
         }
+    });
+};
+
+export const toggleEditorMode = value => dispatch => {
+    dispatch({
+        type: ActionTypes.TOGGLE_EDITOR_MODE,
+        payload: value
     });
 };

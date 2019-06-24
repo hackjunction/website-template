@@ -43,7 +43,7 @@
     {
       "method": "DELETE",
       "path": "/textfields/:_id",
-      "handler": "Textfield.destroy",
+      "handler": "Textfield.delete",
       "config": {
         "policies": []
       }

@@ -6,6 +6,10 @@ const client = new ApolloClient({
     uri: config.GRAPHQL_BASE_URL
 });
 
+/**
+ * You can try these out at http://localhost:1337/graphql
+ */
+
 export const getStaticContent = () => {
     return client
         .query({
