@@ -1,3 +1,5 @@
+# Important! This project is undergoing some changes and documentation is currently outdated. Proceed with caution.
+
 # React + Strapi website template
 
 This is a website template for building a beautiful website that is 100% editable by non-technical users via a visual admin panel :)
