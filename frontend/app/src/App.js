@@ -10,6 +10,8 @@ import Header from './components/Header';
 import HeroImage from './components/HeroImage';
 import HeroCTA from './components/HeroCTA';
 import EditorTools from './components/EditorTools';
+import BasicSection from './components/BasicSection';
+import Markdown from './components/Markdown';
 
 class App extends Component {
     async componentDidMount() {
@@ -27,13 +29,16 @@ class App extends Component {
                             <HeroCTA
                                 image={getMedia('homePageHeroCtaLogo')}
                                 subtitle={getText('homePageHeroCtaSubtitle')}
-                                ctaText={getText('homePageHeroCtaText')}
+                                ctaText={getText('leevinJuttu')}
                                 ctaLink={getText('homePageHeroCtaLink')}
                             />
                         </HeroImage>
-                        <div>
-                            <h1>{getText('myKey')}</h1>
-                        </div>
+                        <BasicSection
+                            title="This is Junction."
+                            subtitle="Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
+                        >
+                            <Markdown source={getText('homePageIntroText')} />
+                        </BasicSection>
                     </main>
                     <EditorTools />
                 </div>

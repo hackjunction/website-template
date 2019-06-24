@@ -4,6 +4,7 @@ import './style.scss';
 import Image from '../Image';
 
 const HeroImage = props => {
+    console.log(props.image);
     return (
         <div className="HeroImage">
             <Image image={props.image} className="HeroImage--img" />

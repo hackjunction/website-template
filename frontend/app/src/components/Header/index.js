@@ -1,18 +1,24 @@
 import React from 'react';
 import './style.scss';
 
+import Image from '../Image';
+
 const Header = () => {
     return (
         <div className="Header">
-            <img
+            <Image
                 className="Header--logo"
-                src={require('../../assets/logos/wordmark_white.png')}
+                image={{
+                    url: require('../../assets/logos/wordmark_white.png')
+                }}
                 alt="Junction wordmark"
             />
             <div className="Header--content" />
-            <img
+            <Image
                 className="Header--emblem"
-                src={require('../../assets/logos/emblem_white.png')}
+                image={{
+                    url: require('../../assets/logos/emblem_white.png')
+                }}
                 alt="Junction emblem"
             />
         </div>

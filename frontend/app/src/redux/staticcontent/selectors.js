@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import * as Helpers from './helpers';
-const CONTENT_MAX_AGE_MS = 1000 * 30; //1000 * 60 * 10;
+const CONTENT_MAX_AGE_MS = 0; //1000 * 60 * 10;
 
 export const textfields = state => state.staticContent.textfields;
 export const mediafields = state => state.staticContent.mediafields;
