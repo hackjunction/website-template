@@ -29,5 +29,4 @@ export const getStaticContent = () => {
                 }
             `
         })
-        .catch(error => console.error(error));
 };
