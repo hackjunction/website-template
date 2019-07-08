@@ -11,7 +11,7 @@ export const getMedia = (mediafields, isEditor) => key => {
         return mediafields[key].media;
     } else {
         return {
-            url: isEditor ? 'https://via.placeholder.com/1920x1080.png?text=' + key : ''
+            url: isEditor ? key : ''
         };
     }
 };

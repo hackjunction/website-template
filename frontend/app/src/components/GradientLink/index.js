@@ -1,9 +1,9 @@
 import React from 'react';
 import './style.scss';
 
-const GradientLink = ({ text, href, color = '255,0,0' }) => {
+const GradientLink = ({ text, href, color = 'default' }) => {
     return (
-        <a href={href} className="GradientLink" style={{ '--color': color }}>
+        <a href={href} className={`GradientLink GradientLink-${color}`}>
             {text}
         </a>
     );

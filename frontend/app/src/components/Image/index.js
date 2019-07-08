@@ -20,7 +20,8 @@ class Image extends PureComponent {
     }
 
     render() {
-        const { image = {}, alt, className, width, height, crop = 'fill', gravity = 'center' } = this.props;
+        const { image = {}, alt, className, transformation = {} } = this.props;
+        const { width, height, crop = 'fill', gravity = 'center' } = transformation;
         const { loaded } = this.state;
 
         if (image !== null && image.public_id) {
@@ -47,8 +48,6 @@ class Image extends PureComponent {
                 src={image ? image.url : ''}
                 alt={alt}
                 className={`Image ${className} ${loaded ? '' : 'Image-loading'}`}
-                width={width}
-                height={height}
                 onLoad={this.setLoaded}
             />
         );

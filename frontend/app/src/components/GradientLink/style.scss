@@ -1,13 +1,9 @@
 @import '../../styles/variables';
 
-$linkColor: var(--color);
-
 .GradientLink {
     @extend %font-title;
     width: 100%;
     max-width: 600px;
-    background: rgba($linkColor, 0.27);
-    background: linear-gradient(145deg, rgba($linkColor, 0.35) 0%, rgba($linkColor, 0.42) 100%);
     padding: 18px;
     font-size: 40px;
     line-height: 44px;
@@ -15,4 +11,14 @@ $linkColor: var(--color);
     font-weight: bold;
     text-align: center;
     border-radius: 10px;
+
+    &-default {
+        background: rgba(red, 0.27);
+        background: linear-gradient(145deg, rgba(red, 0.35) 0%, rgba(red, 0.42) 100%);
+    }
+
+    &-purple {
+        background: rgba(purple, 0.27);
+        background: linear-gradient(145deg, rgba(purple, 0.35) 0%, rgba(purple, 0.42) 100%);
+    }
 }

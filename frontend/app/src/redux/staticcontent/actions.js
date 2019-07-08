@@ -11,7 +11,7 @@ export const updateStaticContent = () => (dispatch, getState) => {
         type: ActionTypes.UPDATE_STATIC_CONTENT,
         promise: GraphqlService.getStaticContent(),
         meta: {
-            onFailure: e => console.log('Error updating events', e)
+            onFailure: e => console.log('Error updating static content', e)
         }
     });
 };
