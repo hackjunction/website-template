@@ -29,7 +29,6 @@ export const getStaticContent = () => {
                 }
             `
         })
-        .catch(error => console.error(error));
 };
 /* Add any content for additional content types here */
 export const getDynamicContent = () => {
