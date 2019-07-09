@@ -3,7 +3,7 @@
 .HeroImage {
     width: 100%;
     padding-top: 56.25%;
-    min-height: 600px;
+    min-height: 720px;
     position: relative;
     mask-image: url('./wave-mask.png');
     mask-size: cover;
@@ -12,9 +12,8 @@
     -webkit-mask-size: cover;
     -webkit-mask-position: bottom;
 
-    @include bp-full {
-        padding-top: 800px;
-        padding-top: $bp-full * 0.5625;
+    @media screen and (min-width: 1920px) {
+        padding-top: 1080px;
     }
 
     &--img {
@@ -38,5 +37,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 2rem;
     }
 }

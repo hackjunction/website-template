@@ -12,3 +12,5 @@ export const shouldUpdate = createSelector(
         return Date.now() - updated > CONTENT_MAX_AGE_MS;
     }
 );
+
+export const partners = state => state.dynamicContent.content.partners;

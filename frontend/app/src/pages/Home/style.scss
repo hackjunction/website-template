@@ -1,11 +1,13 @@
 .HomePage {
     &--logo {
         width: 100%;
-        max-width: 600px;
-        height: 300px;
+        max-width: 980px;
+        object-fit: contain;
     }
 
     &--title {
         text-align: center;
+        font-size: 40px;
+        margin: 0;
     }
 }

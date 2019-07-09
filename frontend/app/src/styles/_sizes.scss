@@ -1,7 +1,6 @@
 $bp-small: 600px;
 $bp-med: 900px;
-$bp-med: 620px;
-$bp-full: 1000px;
+$bp-full: 1200px;
 
 @mixin bp-small-only {
     @media (max-width: $bp-med - 1) {

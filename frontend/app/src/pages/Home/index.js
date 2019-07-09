@@ -19,22 +19,19 @@ const HomePage = ({ getText, getMedia }) => {
             <HeroImage image={getMedia('homePageHeaderImage')}>
                 <Image
                     className="HomePage--logo"
-                    transformation={{ width: 600, height: 200 }}
+                    transformation={{ width: 400 }}
                     image={getMedia('homePageHeroCtaLogo')}
                 />
+                <Divider size="sm" />
                 <h2 className="HomePage--title">{getText('homePageHeroCtaSubtitle')}</h2>
+                <Divider size="md" />
                 <GradientLink href="http://google.com" text="Apply now" />
-                {/* <GradientLink href={props.ctaLink} text={props.ctaText} /> */}
-                {/* <HeroCTA
-                                image={getMedia('homePageHeroCtaLogo')}
-                                subtitle={getText('homePageHeroCtaSubtitle')}
-                                ctaText={getText('leevinJuttu')}
-                                ctaLink={getText('homePageHeroCtaLink')}
-                            /> */}
             </HeroImage>
+            <SingleColumnSection title="Europe's leading hackathon is taking over Helsinki again." />
+            <Divider size="lg" />
             <TwoColumnSection
                 title="This is Junction."
-                subtitle="Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet"
+                subtitle="Hackathon = The goal of a hackathon is to create usable software or hardware with the goal of creating a functioning product by the end of the event."
             >
                 <Markdown source={getText('homePageIntroText')} />
             </TwoColumnSection>
